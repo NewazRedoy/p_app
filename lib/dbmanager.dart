@@ -1,8 +1,8 @@
 import 'dart:collection';
-import 'dart:ffi';
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'dart:async';
 
 class DbStudentManager {
   Database _database;
@@ -14,7 +14,7 @@ class DbStudentManager {
           version: 1,
           onCreate: (Database db, int version) async {
             await db.execute(
-                "CREAT TABLE student (id, INTEGER PRIMARYKEY autoincrement,name,TEXT,COURSE,TEXT)");
+                "CREATE TABLE student (id, INTEGER PRIMARYKEY autoincrement,name TEXT,COURSE TEXT)");
           }
       );
     }
@@ -58,7 +58,7 @@ class Student{
   int id;
   String name;
   String course;
-  Student({@required this.name,@required this.course, this.id});
+  Student({@required this.name,@required this.course,id});
   Map<String, dynamic> toMap(){
     return{'name':name,'course':course,};
   }
